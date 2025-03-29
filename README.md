@@ -29,8 +29,8 @@ CalcBlast is an interactive web application designed to help users practice and 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/calcblast.git
-cd calcblast
+git clone https://github.com/hjhgjhgj78/CalcBlast.git
+cd CalcBlast
 ```
 
 2. Install dependencies:
