@@ -1,10 +1,15 @@
-import type React from "react"
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import Script from "next/script"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "CalcBlast - Learn Calculus Through Gaming",
+  description: "A fun and interactive way to learn calculus through gaming. Practice derivatives, integrals, and limits while playing a block-placement game.",
+}
 
 export default function RootLayout({
   children,
@@ -12,68 +17,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-          integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
-          crossOrigin="anonymous"
-        />
-        <style>
-          {\`
-            /* Custom styles for KaTeX */
-            .katex { font-size: 1.1em; }
-            .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; }
-            .katex-display > .katex { font-size: 1.4em; }
-            
-            /* Fix alignment and spacing */
-            .math-display-container {
-              display: flex;
-              justify-content: center;
-              margin: 1rem 0;
-              width: 100%;
-            }
-            
-            /* Ensure proper spacing in inline math */
-            .katex-inline {
-              margin: 0 0.2em;
-            }
-            
-            /* Improve readability of math expressions */
-            .katex-html {
-              white-space: normal;
-            }
-            
-            /* Make sure fractions and other complex expressions display properly */
-            .katex .mfrac .frac-line {
-              border-bottom-width: 1px;
-            }
-            
-            /* Ensure proper spacing in operators */
-            .katex .mbin {
-              margin: 0 0.1em;
-            }
-            
-            .katex .mrel {
-              margin: 0 0.1em;
-            }
-          \`}
-        </style>
-      </head>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
+          <Toaster />
         </ThemeProvider>
-        <Script
-          src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-          integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-          onError={(e) => {
-            console.error("KaTeX script failed to load:", e)
-          }}
-        />
       </body>
     </html>
   )

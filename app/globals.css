@@ -64,13 +64,26 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-}
- 
-@layer base {
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .katex-display {
+    @apply my-4 overflow-x-auto;
+  }
+
+  .katex {
+    @apply text-lg;
+  }
+
+  .math-display-container {
+    @apply w-full overflow-x-auto py-2;
   }
 } 
